@@ -34,7 +34,7 @@ gulp.task('default', ['clean'], function () {
 gulp.task('webserver', function() {
   gulp.src('app')
     .pipe(webserver({
-      port: 3002,
+      port: 3000,
       host: 'ec2-54-186-5-126.us-west-2.compute.amazonaws.com',
       //fallback: 'index.html',
       livereload: true,
