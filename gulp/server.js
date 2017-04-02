@@ -40,7 +40,7 @@ function browserSyncInit(baseDir, browser) {
     server: server,
     browser: browser,
     ghostMode: false,
-    open:false,
+    open:true,
   });
 }
 
