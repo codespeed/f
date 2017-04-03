@@ -23,10 +23,10 @@ export class ApplyController {
 	getprofile(){
 		var vm = this;
 		var token = this.$auth.getToken();
-		vm.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-data',{token: token}).then(function(result){
+		vm.$http.post('http://localhost:5000/api/health-card-data',{token: token}).then(function(result){
 			var data = result.data;
 			if (!data) {
-				vm.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/profile',{token: token}).then(function(result){
+				vm.$http.post('http://localhost:5000/api/profile',{token: token}).then(function(result){
 					var data = result.data;
 					vm.displayProfle(data)
 				});
@@ -58,10 +58,10 @@ export class ApplyController {
 		this.hc_position = data.hc_position ? data.hc_position : "";
 		this.hc_ethnic_group = data.hc_ethnic_group ? data.hc_ethnic_group : "";
 		this.verification_code = data.verification_code ? data.verification_code : "";
-		this.d = data.verification_code ? data.d : "na";
-		this.m = data.verification_code ? data.m : "na";
-		this.y = data.verification_code ? data.y : "na";
-		this.hid = data.verification_code ? data.hid : "na";
+		this.d = data.d ? data.d : "na";
+		this.m = data.m ? data.m : "na";
+		this.y = data.y ? data.y : "na";
+		this.hid = data.hid ? data.hid : "na";
 	}
 	applicationStatus(status){
 		return this.ApplicationStatus == status;
@@ -97,10 +97,10 @@ export class ApplyController {
 			hc_job_category : this.properValue( this.hc_job_category ),
 			hc_position : this.properValue( this.hc_position ),
 			hc_ethnic_group : this.properValue( this.hc_ethnic_group ),
-			d : this.properValue( this.d ),
-			m : this.properValue( this.m ),
-			y : this.properValue( this.y ),
-			hid : this.properValue( this.hid ),
+			d : "",
+			m : "",
+			y : "",
+			hid : "",
 		};
 
 		var validation = this.validateData(data);
@@ -212,17 +212,17 @@ export class ApplyController {
 			hc_job_category : this.properValue( this.hc_job_category ),
 			hc_position : this.properValue( this.hc_position ),
 			hc_ethnic_group : this.properValue( this.hc_ethnic_group ), 
-			d : this.properValue( this.d ), 
-			m : this.properValue( this.m ), 
-			y : this.properValue( this.y ), 
-			hid :this.properValue( this.hid ), 
+			d : "", 
+			m : "", 
+			y : "", 
+			hid : "", 
 		};
 
 		return this.validateData(data)['valid'];
 	}
 	postSubmitApplication(data, contact, token){
 		var location = this.location;
-		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-application', {data:data, contact:contact, token:token}).success(function(){
+		this.$http.post('http://localhost:5000/api/health-card-application', {data:data, contact:contact, token:token}).success(function(){
 			location.href = location.origin + "/#/apply-submitted"
 		}).error(function(err){
 			alert("Unable to Proceed. " + err);
@@ -230,7 +230,7 @@ export class ApplyController {
 	}
 	postUpdateApplication(data, contact, token){
 		var location = this.location;
-		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-application-update', {data:data, contact:contact, token:token}).success(function(){
+		this.$http.post('http://localhost:5000/api/health-card-application-update', {data:data, contact:contact, token:token}).success(function(){
 			location.href = location.origin + "/#/apply-updated"
 		}).error(function(err){
 			alert("Unable to Proceed. " + err);
@@ -250,7 +250,7 @@ export class ApplyController {
 			 	var location = this.location;
 			 	$('#resend-code').modal("hide");
 			 	location.href = location.origin + "/#/apply-resend";
-			 	this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/api/health-card-resend', {cno:cno, verification_code:verification_code}).success(function(){
+			 	this.$http.post('http://localhost:5000/api/health-card-resend', {cno:cno, verification_code:verification_code}).success(function(){
 					
 				}).error(function(err){
 					alert("Unable to Proceed. " + err);

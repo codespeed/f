@@ -18,7 +18,7 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
 angular.module('project1', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr', 'satellizer', 'ngFileUpload'])
-  .constant('API_URL', "http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/")
+  .constant('API_URL', "http://localhost:5000/")
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
