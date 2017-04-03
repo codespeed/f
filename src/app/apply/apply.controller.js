@@ -58,10 +58,10 @@ export class ApplyController {
 		this.hc_position = data.hc_position ? data.hc_position : "";
 		this.hc_ethnic_group = data.hc_ethnic_group ? data.hc_ethnic_group : "";
 		this.verification_code = data.verification_code ? data.verification_code : "";
-		this.d = data.verification_code ? data.d : "";
-		this.m = data.verification_code ? data.m : "";
-		this.y = data.verification_code ? data.y : "";
-		this.hid = data.verification_code ? data.hid : "";
+		this.d = data.verification_code ? data.d : "na";
+		this.m = data.verification_code ? data.m : "na";
+		this.y = data.verification_code ? data.y : "na";
+		this.hid = data.verification_code ? data.hid : "na";
 	}
 	applicationStatus(status){
 		return this.ApplicationStatus == status;
@@ -212,10 +212,10 @@ export class ApplyController {
 			hc_job_category : this.properValue( this.hc_job_category ),
 			hc_position : this.properValue( this.hc_position ),
 			hc_ethnic_group : this.properValue( this.hc_ethnic_group ), 
-			d : "",
-			m : "",
-			y : "",
-			hid : ""
+			d : this.properValue( this.d ), 
+			m : this.properValue( this.m ), 
+			y : this.properValue( this.y ), 
+			hid :this.properValue( this.hid ), 
 		};
 
 		return this.validateData(data)['valid'];
