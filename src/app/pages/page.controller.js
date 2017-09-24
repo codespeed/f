@@ -161,7 +161,7 @@ export class PageController {
 	postSubmitApplication(data){
 		var location = this.location;
 		var vm = this;
-		this.$http.post('http://localhost:5000/auth/register', data).success(function(){
+		this.$http.post('http://ec2-54-186-5-126.us-west-2.compute.amazonaws.com:5000/auth/register', data).success(function(){
 			location.href = location.origin + "/#/registration-process"
 		}).error(function(err){
 			alert( err['message'] );
